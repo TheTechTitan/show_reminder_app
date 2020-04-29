@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:show_reminder_app/models/channel.dart';
+import 'package:show_reminder_app/screens/home/tvShow.dart';
 
 
 class ChannelTile extends StatelessWidget {
@@ -17,6 +18,12 @@ class ChannelTile extends StatelessWidget {
           leading: Image.network(channel.image),
           title: Text(channel.title),
           subtitle: Text(channel.description),
+          onTap: (){
+            print('tapped channel');
+            Navigator.push(context, MaterialPageRoute(builder: (context) {
+              return TvShow(channelId: channel.channelId);
+            }));
+          },
         ),
       ),
     );

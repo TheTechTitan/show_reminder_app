@@ -14,7 +14,7 @@ class _ChannelListState extends State<ChannelList> {
   Widget build(BuildContext context) {
     
     final channels = Provider.of<List<Channel>>(context) ?? [];
-    
+
     return ListView.builder(
       itemCount: channels.length,
       itemBuilder: (context,index){
