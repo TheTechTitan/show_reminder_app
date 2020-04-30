@@ -7,7 +7,9 @@ import 'package:show_reminder_app/services/fireStoreService.dart';
 
 class TvShow extends StatelessWidget {
 
+  //final reminder;
   final String channelId;
+
   TvShow({this.channelId});
 
   final AuthenticationService _authService = AuthenticationService(); 

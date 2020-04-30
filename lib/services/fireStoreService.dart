@@ -23,11 +23,11 @@ class FireStoreService{
   List<Channel> _channelFromSnapshot(QuerySnapshot snapshot){
     return snapshot.documents.map((doc){
         return Channel(
-          channelId: doc.documentID,
-          title: doc.data['title'] ?? '',
+          channelId:  doc.documentID,
+          title:  doc.data['title'] ?? '',
           description: doc.data['description'] ?? '',
-          ratings: doc.data['ratings'] ?? 0,
-          image: doc.data['image'] ?? ''
+          ratings:  doc.data['ratings'] ?? '0.0',
+          image:  doc.data['image'] ?? ''
         );
     }).toList();
   }
@@ -35,10 +35,10 @@ class FireStoreService{
   List<Show> _showFromSnapshot(QuerySnapshot snapshot){
     return snapshot.documents.map((doc){
         return Show(
-          title: doc.data['title'] ?? '',
-          airdate: doc.data['airdate'] ?? '',
-          ratings: doc.data['ratings'] ?? 0,
-          image: doc.data['image'] ?? ''
+          title:  doc.data['title'] ?? '',
+          airdate:  doc.data['airdate'] ?? '',
+          ratings: doc.data['ratings'] ?? '0.0',
+          image:  doc.data['image'] ?? ''
         );
     }).toList();
   }

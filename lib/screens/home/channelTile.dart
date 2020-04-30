@@ -9,13 +9,13 @@ class ChannelTile extends StatelessWidget {
   ChannelTile({this.channel});
  
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context)  {
     return Padding(
       padding: EdgeInsets.only(top:8.0),
       child: Card(
         margin: EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 0.0),
-        child: ListTile(
-          leading: Image.network(channel.image),
+        child: ListTile (
+          leading: Image.network(channel.image) ?? '',
           title: Text(channel.title),
           subtitle: Text(channel.description),
           onTap: (){
