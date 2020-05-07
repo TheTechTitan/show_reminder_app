@@ -46,7 +46,8 @@ class AuthenticationService{
   //sign-out service
   Future signOut() async{ 
     try{
-      return await _authService.signOut();
+      
+      await _authService.signOut();
     }catch(e){
       print(e.toString());
       return null;

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:show_reminder_app/models/show.dart';
 import 'package:show_reminder_app/screens/home/showList.dart';
+import 'package:show_reminder_app/screens/wrapper.dart';
 import 'package:show_reminder_app/services/authService.dart';
 import 'package:show_reminder_app/services/fireStoreService.dart';
 
@@ -19,19 +20,35 @@ class TvShow extends StatelessWidget {
     return StreamProvider<List<Show>>.value(
         value: FireStoreService(channelId: channelId).channelShows,
         child: Container(
+        
         child: Scaffold(
-          backgroundColor: Colors.blueAccent[300],
+          backgroundColor: Colors.white12,
           appBar: AppBar(
-            title: Text('Infinity shows'),
-            backgroundColor: Colors.blueAccent[50],
-            elevation: 0.0,
+            leading: IconButton(
+              icon: Icon(
+                Icons.arrow_back_ios,
+              ), 
+              onPressed: () =>Navigator.pop(context),
+            ),
+            title: Padding(
+              padding: const EdgeInsets.only(left: 50),
+              child: Center(child: Text('INFINITY SHOWS' , style: TextStyle(color: Colors.blueAccent ))),
+            ),
+            backgroundColor: Colors.black12,
+            elevation: 5,
             actions: <Widget>[
               FlatButton.icon(
+                textColor: Colors.white,
                 onPressed: () async{
                   await _authService.signOut();
+                   Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Wrapper()),
+                  );
                   Navigator.pop(context);
+                  print('i poppsed');
                 }, 
-                icon: Icon(Icons.person), 
+                icon: Icon(Icons.exit_to_app), 
                 label: Text('Sign Out'),
               ),
             ],

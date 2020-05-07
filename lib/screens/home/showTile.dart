@@ -15,9 +15,9 @@ class ShowTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-        padding: EdgeInsets.all(10),
+        padding: EdgeInsets.fromLTRB(5, 15, 5, 0),
         child: Card(
-        elevation: 2.0,
+        elevation: 30.0,
         shape: new RoundedRectangleBorder(
           borderRadius: new BorderRadius.circular(16.0),
         ),
@@ -27,7 +27,7 @@ class ShowTile extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Container(
-                  height: 150,
+                  height: 130,
                   width: 600,
                   child: new ClipRRect(
                   child: Image(
@@ -43,13 +43,14 @@ class ShowTile extends StatelessWidget {
                 ),
               ),
               new Padding(
-                padding: new EdgeInsets.all(10),
+                padding: new EdgeInsets.fromLTRB(15, 0, 15, 10),
                 child: new Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
                       children: <Widget>[
                         new Text(show.title, style: Theme.of(context).textTheme.title),
                         new Text('IMDb  '+show.ratings+'/10',style: Theme.of(context).textTheme.body2),
@@ -60,9 +61,10 @@ class ShowTile extends StatelessWidget {
                             IconButton(
                               color: Colors.blueAccent,
                               iconSize: 35,
-                              icon: Icon(Icons.access_alarm),
+                              icon: Icon(Icons.schedule),
                               onPressed: () {
                                   _reminderService.showNotificationsAfterSecond();
+                                  print(_reminderService.flutterLocalNotificationsPlugin.getNotificationAppLaunchDetails());
                               },
                             ),
                             

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
-class ReminderService  {
+class ReminderService {
 
   
   FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
@@ -11,10 +11,10 @@ class ReminderService  {
   IOSInitializationSettings iosInitializationSettings;
   InitializationSettings initializationSettings;
 
- 
-
+  
   void initializing() async {
-    androidInitializationSettings = AndroidInitializationSettings('@mipmap/ic_launcher');
+    print('iam initialisedddddddd');
+    androidInitializationSettings = AndroidInitializationSettings('app_icon');
     iosInitializationSettings = IOSInitializationSettings(
         onDidReceiveLocalNotification: onDidReceiveLocalNotification);
     initializationSettings = InitializationSettings(
@@ -37,6 +37,7 @@ class ReminderService  {
   } */
 
   void showNotificationsAfterSecond() async {
+    initializing();
     await notificationAfterSec();
   }
 
@@ -61,7 +62,7 @@ class ReminderService  {
     var timeDelayed = DateTime.now().add(new Duration(seconds: 5));
     print(timeDelayed);
     AndroidNotificationDetails androidNotificationDetails =new AndroidNotificationDetails(
-            'second channel ID', 'second Channel title', 'second channel body',
+            'second channel ID', 'seconf Channel title', 'second channel body',
             priority: Priority.High,
             importance: Importance.Max,
             ticker: 'test');
@@ -69,7 +70,7 @@ class ReminderService  {
     IOSNotificationDetails iosNotificationDetails = IOSNotificationDetails();
 
     NotificationDetails notificationDetails = new NotificationDetails(androidNotificationDetails, iosNotificationDetails);
-    await flutterLocalNotificationsPlugin.schedule(0, 'Hello there',
+    await flutterLocalNotificationsPlugin.schedule(1, 'Hello there',
         'Watch Full Episodes of "Emergent" Streaming Now on Hulu.', timeDelayed, notificationDetails);
   }
 

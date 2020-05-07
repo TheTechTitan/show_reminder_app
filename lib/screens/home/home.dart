@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:show_reminder_app/models/channel.dart';
 import 'package:show_reminder_app/screens/home/channelList.dart';
+import 'package:show_reminder_app/screens/wrapper.dart';
 import 'package:show_reminder_app/services/authService.dart';
 import 'package:show_reminder_app/services/fireStoreService.dart';
 
@@ -12,25 +13,35 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamProvider<List<Channel>>.value(
-        value: FireStoreService().channels,
+        value:  FireStoreService().channels,
         child: Container(
         child: Scaffold(
-          backgroundColor: Colors.blueAccent[300],
+          backgroundColor: Colors.white12,
           appBar: AppBar(
-            title: Text('Infinity reminder'),
-            backgroundColor: Colors.blueAccent[50],
-            elevation: 0.0,
+            title: Padding(
+              padding: const EdgeInsets.only(left: 50),
+              child: Center(child: Text('INFINITY CHANNELS' , style: TextStyle(color: Colors.blueAccent ))),
+            ),
+            backgroundColor: Colors.black12,
+            elevation:  5,
             actions: <Widget>[
               FlatButton.icon(
+                textColor: Colors.white,
                 onPressed: () async{
                   await _authService.signOut();
+                  /* Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Wrapper()),
+                  );
+                  Navigator.pop(context);
+                  print('i poppsed'); */
                 }, 
-                icon: Icon(Icons.person), 
+                icon: Icon(Icons.exit_to_app), 
                 label: Text('Sign Out'),
               ),
             ],
           ),
-          body: ChannelList()
+          body:  ChannelList()
         ),
       ),
     );
