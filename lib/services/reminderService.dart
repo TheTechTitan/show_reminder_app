@@ -13,7 +13,6 @@ class ReminderService {
 
   
   void initializing() async {
-    print('iam initialisedddddddd');
     androidInitializationSettings = AndroidInitializationSettings('app_icon');
     iosInitializationSettings = IOSInitializationSettings(
         onDidReceiveLocalNotification: onDidReceiveLocalNotification);
@@ -27,40 +26,19 @@ class ReminderService {
     if (payLoad != null) {
       print(payLoad);
     }
-
-    // we can set navigator to navigate another screen
   }
   
 
-  /* void _showNotifications() async {
-    await notification();
-  } */
-
-  void showNotificationsAfterSecond() async {
+  void showNotificationsAfterSecond(sub,body) async {
     initializing();
-    await notificationAfterSec();
+    await notificationAfterSec(sub,body);
   }
 
-  /* Future<void> notification() async {
-    AndroidNotificationDetails androidNotificationDetails =
-        AndroidNotificationDetails(
-            'Channel ID', 'Channel title', 'channel body',
-            priority: Priority.High,
-            importance: Importance.Max,
-            ticker: 'test');
-
-    IOSNotificationDetails iosNotificationDetails = IOSNotificationDetails();
-
-    NotificationDetails notificationDetails =
-        NotificationDetails(androidNotificationDetails, iosNotificationDetails);
-    await flutterLocalNotificationsPlugin.show(
-        0, 'Hello there', 'Watch Full Episodes of "Emergent" Streaming Now on Hulu.', notificationDetails);
-  } */
-
-  Future<void> notificationAfterSec() async {
-    //schdeuling for 5 seconds after click
-    var timeDelayed = DateTime.now().add(new Duration(seconds: 5));
-    print(timeDelayed);
+  
+  Future<void> notificationAfterSec(sub,body) async {
+    
+    var timeDelayed = body;
+    
     AndroidNotificationDetails androidNotificationDetails =new AndroidNotificationDetails(
             'second channel ID', 'seconf Channel title', 'second channel body',
             priority: Priority.High,
@@ -70,31 +48,11 @@ class ReminderService {
     IOSNotificationDetails iosNotificationDetails = IOSNotificationDetails();
 
     NotificationDetails notificationDetails = new NotificationDetails(androidNotificationDetails, iosNotificationDetails);
-    await flutterLocalNotificationsPlugin.schedule(1, 'Hello there',
-        'Watch Full Episodes of "Emergent" Streaming Now on Hulu.', timeDelayed, notificationDetails);
+    await flutterLocalNotificationsPlugin.schedule(1, 'Reminder: '+sub.toString(),
+       'Broadcasting now: '+ body.toString() , timeDelayed, notificationDetails);
   }
 
   
-
-	//schdeuling a weekly reminder
-  // Future<void> _showWeeklyAtDayAndTime() async {
-  //   var time = Time(10, 0, 0);
-  //   var androidPlatformChannelSpecifics = AndroidNotificationDetails(
-  //       'show weekly channel id',
-  //       'show weekly channel name',
-  //       'show weekly description');
-  //   var iOSPlatformChannelSpecifics = IOSNotificationDetails();
-  //   var platformChannelSpecifics = NotificationDetails(
-  //       androidPlatformChannelSpecifics, iOSPlatformChannelSpecifics);
-  //   await flutterLocalNotificationsPlugin.showWeeklyAtDayAndTime(
-  //       0,
-  //       'show weekly title',
-  //       'Weekly notification shown on Monday at approximately',
-  //       Day.Monday,
-  //       time,
-  //       platformChannelSpecifics);
-  // }
-
   Future onDidReceiveLocalNotification(
       int id, String title, String body, String payload) async {
     return CupertinoAlertDialog(

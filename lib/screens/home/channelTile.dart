@@ -13,11 +13,7 @@ class ChannelTile extends StatelessWidget {
     return Padding(
         padding: EdgeInsets.fromLTRB(5, 20, 5, 5),
         child: Container(
-       /*  elevation: 30.0,
-        shape: new RoundedRectangleBorder(
-          borderRadius: new BorderRadius.circular(16.0),
-        ), */
-        
+    
         decoration: BoxDecoration(
             color: Colors.white,
             //shape: BoxShape.rectangle,
@@ -25,8 +21,6 @@ class ChannelTile extends StatelessWidget {
               Radius.circular(16),
             ) 
           ),
-        //height: 300,
-        //color: Colors.amber,
         child: new InkWell(
           child: new Column(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -69,8 +63,7 @@ class ChannelTile extends StatelessWidget {
                               iconSize: 35,
                               icon: Icon(Icons.tv),
                               onPressed: () {
-                                  //_reminderService.showNotificationsAfterSecond();
-                                  //print(_reminderService.flutterLocalNotificationsPlugin.getNotificationAppLaunchDetails());
+                                  
                               },
                             ),
                             
@@ -90,7 +83,6 @@ class ChannelTile extends StatelessWidget {
                             maxLines: 3,
                           ),
                         ),
-                        //Text('Remind Me')
                       ],
                     ),
                   ],

@@ -63,8 +63,7 @@ class ShowTile extends StatelessWidget {
                               iconSize: 35,
                               icon: Icon(Icons.schedule),
                               onPressed: () {
-                                  _reminderService.showNotificationsAfterSecond();
-                                  print(_reminderService.flutterLocalNotificationsPlugin.getNotificationAppLaunchDetails());
+                                  _reminderService.showNotificationsAfterSecond(show.title,show.airdate.toDate());
                               },
                             ),
                             
@@ -84,9 +83,6 @@ class ShowTile extends StatelessWidget {
               ),
             ],
           ),
-          onTap: () {
-            //Navigator.of(context).push(MaterialPageRoute(builder: (context) => new DetailPage(data: this.data)));
-          },
         ),
       ),
     );

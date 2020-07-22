@@ -10,14 +10,6 @@ class FireStoreService{
 
   final CollectionReference channelCollection=Firestore.instance.collection('channels');
 
- /*  Future updateChannelData(String title, String des, double rating)async{
-
-    return await channelCollection.document().setData({
-      'title' : title,
-      'description' : des,
-      'rating' : rating
-    });
-  } */
 
   //channel from snapshot
   List<Channel> _channelFromSnapshot(QuerySnapshot snapshot){

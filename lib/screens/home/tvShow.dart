@@ -45,8 +45,6 @@ class TvShow extends StatelessWidget {
                     context,
                     MaterialPageRoute(builder: (context) => Wrapper()),
                   );
-                  Navigator.pop(context);
-                  print('i poppsed');
                 }, 
                 icon: Icon(Icons.exit_to_app), 
                 label: Text('Sign Out'),

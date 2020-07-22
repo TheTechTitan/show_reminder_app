@@ -29,12 +29,10 @@ class Home extends StatelessWidget {
                 textColor: Colors.white,
                 onPressed: () async{
                   await _authService.signOut();
-                  /* Navigator.push(
+                  Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => Wrapper()),
                   );
-                  Navigator.pop(context);
-                  print('i poppsed'); */
                 }, 
                 icon: Icon(Icons.exit_to_app), 
                 label: Text('Sign Out'),

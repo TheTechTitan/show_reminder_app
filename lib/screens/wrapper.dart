@@ -4,7 +4,7 @@ import 'package:show_reminder_app/models/user.dart';
 import 'package:show_reminder_app/screens/authenticate/auth.dart';
 import 'package:show_reminder_app/screens/home/home.dart';
 import 'package:splashscreen/splashscreen.dart';
-//import 'package:show_reminder_app/screens/home/home.dart';
+
 
 class Wrapper extends StatelessWidget {
   @override
@@ -17,13 +17,13 @@ class Wrapper extends StatelessWidget {
       return Authenticate();
     }else{
       return SplashScreen(
-        seconds: 4,
+        seconds: 10,
         navigateAfterSeconds: Home(),
         image: new Image.asset(
-            'assets/power_stone.gif'),
+            'assets/infinity_splash.gif'),
         backgroundColor: Colors.black,
         styleTextUnderTheLoader: new TextStyle(),
-        photoSize: 150.0,
+        photoSize: 250.0,
         onClick: () => print("spashscreen clicked"),
         loaderColor: Colors.white,
         title: Text('WELCOME!', style: TextStyle(color: Colors.blueAccent , fontSize: 35)),
